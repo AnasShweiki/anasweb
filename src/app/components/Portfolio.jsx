@@ -1,8 +1,10 @@
+// Portfolio.jsx
 import React, { useState } from 'react';
 import { ProjectCard } from './ProjectCard';
+import { motion } from 'framer-motion';
 
 const Portfolio = () => {
-  const [activeTab, setActiveTab] = useState('first'); // Handle active tab state
+  const [activeTab, setActiveTab] = useState('first');
 
   const projects = [
     { title: 'Business Startup', description: 'Design & Development', imgUrl: "/project-img1.png" },
@@ -18,11 +20,11 @@ const Portfolio = () => {
       <div className="container mx-auto px-6">
         <h2 className="text-3xl font-semibold text-center text-gray-900 mb-4">Projects</h2>
         <p className="text-lg text-center text-gray-600 mb-10">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrs standard dummy text ever since the 1500s.
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         </p>
 
         {/* Tab Navigation */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-6" id="tab1">
           <button
             className={`px-6 py-2 text-sm font-medium text-gray-700 ${activeTab === 'first' ? 'bg-gray-300' : 'bg-gray-200'} rounded-l-lg hover:bg-gray-300 focus:outline-none transition duration-300`}
             onClick={() => setActiveTab('first')}
@@ -44,8 +46,11 @@ const Portfolio = () => {
         </div>
 
         {/* Tab Content */}
-        <div>
-          {/* First Tab Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           {activeTab === 'first' && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project, index) => (
@@ -54,7 +59,6 @@ const Portfolio = () => {
             </div>
           )}
 
-          {/* Second and Third Tab Content */}
           {activeTab !== 'first' && (
             <div className="text-center py-6">
               <p className="text-lg text-gray-600">
@@ -62,10 +66,8 @@ const Portfolio = () => {
               </p>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
-
- 
     </section>
   );
 };

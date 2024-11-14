@@ -1,13 +1,21 @@
 // pages/index.jsx
 "use client";
+import { useRef } from "react";
 import Dimages from "./components/dImages";
 import Portfolio from "./components/Portfolio";
 import Typewriter from "./components/Typewriter";
 import ScrollAnimation from "./components/ScrollAnimation";
 import { motion } from "framer-motion";
 import BackgroundGradient from "./components/BackgroundGradient";
+import Footer from "./components/Footer"
 
 export default function Example() {
+  const footerRef = useRef(null);
+
+  const scrollToFooter = () => {
+    footerRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="isolate px-6 pt-14 lg:px-4 bg-gray-950">
       <BackgroundGradient />
@@ -43,9 +51,9 @@ export default function Example() {
 
           <ScrollAnimation delay={0.5}>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <motion.a href="#" className="rounded-md bg-[#7775D6] px-6 py-3 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7775D6]" whileHover={{ scale: 1.1, backgroundColor: "#4c51bf" }} transition={{ duration: 0.3 }}>
+              <motion.button onClick={scrollToFooter} className="rounded-md bg-[#7775D6] px-6 py-3 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7775D6]" whileHover={{ scale: 1.1, backgroundColor: "#4c51bf" }} transition={{ duration: 0.3 }}>
                 Get started
-              </motion.a>
+              </motion.button>
               <motion.a href="#" className="text-lg font-semibold text-[#333333]" whileHover={{ scale: 1.1, color: "#7775D6" }} transition={{ duration: 0.3 }}>
                 Learn more <span aria-hidden="true">→</span>
               </motion.a>
@@ -56,6 +64,11 @@ export default function Example() {
 
       <Dimages />
       <Portfolio />
+
+      {/* Footer Section */}
+      <footer ref={footerRef} >
+        <Footer/>
+      </footer>
     </div>
   );
 }

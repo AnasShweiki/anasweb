@@ -1,19 +1,29 @@
-'use client'
+// Header.jsx
+'use client';
 
-import React, { useState } from 'react'
-import Modal from 'react-modal'
-import { FaBars, FaTimes } from 'react-icons/fa'  // استبدال الأيقونات بـ react-icons
-import { motion } from 'framer-motion'  // مكتبة الأنيميشن
+import React, { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { scroller } from 'react-scroll'; // مكتبة للتحكم في التمرير
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
+  { name: 'Product', href: 'tab1' }, // اجعل href يمثل ID للقسم المطلوب
+  { name: 'Features', href: 'features' },
+  { name: 'Marketplace', href: 'marketplace' },
+  { name: 'Company', href: 'company' },
+];
 
 const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // دالة التمرير للعنصر المحدد مع إضافة انيميشن سلس
+  const scrollToSection = (section) => {
+    scroller.scrollTo(section, {
+      duration: 800, // مدة الحركة
+      delay: 0,
+      smooth: 'easeInOutQuart', // نوع الحركة
+    });
+  };
 
   return (
     <div className="relative z-50 bg-slate-950 shadow-2xl">
@@ -43,14 +53,14 @@ const Header = () => {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <motion.a
+              <motion.button
                 key={item.name}
-                href={item.href}
+                onClick={() => scrollToSection(item.href)}
                 className="text-sm font-semibold text-slate-300 hover:text-indigo-500 transition duration-300"
                 whileHover={{ scale: 1.05 }}
               >
                 {item.name}
-              </motion.a>
+              </motion.button>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -63,64 +73,10 @@ const Header = () => {
             </motion.a>
           </div>
         </nav>
-
-        {/* Mobile Menu - Modal with react-modal */}
-        <Modal
-          isOpen={mobileMenuOpen}
-          onRequestClose={() => setMobileMenuOpen(false)}
-          className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
-          overlayClassName="fixed inset-0 z-50 bg-black bg-opacity-50"
-        >
-          <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                alt="Logo"
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
-              />
-            </a>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(false)}
-              className="-m-2.5 rounded-md p-2.5 text-indigo-400"
-            >
-              <span className="sr-only">Close menu</span>
-              <FaTimes aria-hidden="true" className="h-6 w-6" />
-            </button>
-          </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-slate-300 hover:bg-gray-50"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {item.name}
-                  </motion.a>
-                ))}
-              </div>
-              <div className="py-6">
-                <motion.a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-300 hover:bg-gray-50"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Log in
-                </motion.a>
-              </div>
-            </div>
-          </div>
-        </Modal>
       </header>
-
-      {/* خلفية ثابتة بدون ألوان */}
       <div className="absolute inset-0 z-10 bg-transparent" />
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

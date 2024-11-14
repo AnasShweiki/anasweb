@@ -13,7 +13,6 @@ export default function RootLayout({ children }) {
       <body className="bg-white text-gray-900"> 
          <Header className="bg-slate-900 text-gray-400"/>
         <main className="bg-slate-950 text-gray-400 ">{children}</main>
-        <Footer />
       </body>
     </html>
   );
