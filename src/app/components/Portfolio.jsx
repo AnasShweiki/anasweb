@@ -19,29 +19,31 @@ const Portfolio = () => {
     <section className="py-16 relative" id="projects">
       <div className="container mx-auto px-6">
         <h2 className="text-3xl font-semibold text-center text-gray-900 mb-4">Projects</h2>
-        <p className="text-lg text-center text-gray-600 mb-10">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </p>
+      
 
         {/* Tab Navigation */}
-        <div className="flex justify-center mb-6" id="tab1">
+        <div className="flex justify-center mb-6" >
           <button
+            id="tab1"
             className={`px-6 py-2 text-sm font-medium text-gray-700 ${activeTab === 'first' ? 'bg-gray-300' : 'bg-gray-200'} rounded-l-lg hover:bg-gray-300 focus:outline-none transition duration-300`}
             onClick={() => setActiveTab('first')}
           >
-            Tab 1
+            Protfolio
           </button>
           <button
+            id="tab2"
             className={`px-6 py-2 text-sm font-medium text-gray-700 ${activeTab === 'second' ? 'bg-gray-300' : 'bg-gray-200'} hover:bg-gray-300 focus:outline-none transition duration-300`}
             onClick={() => setActiveTab('second')}
           >
-            Tab 2
+            Skills
           </button>
           <button
+            id="tab3"
+
             className={`px-6 py-2 text-sm font-medium text-gray-700 ${activeTab === 'third' ? 'bg-gray-300' : 'bg-gray-200'} rounded-r-lg hover:bg-gray-300 focus:outline-none transition duration-300`}
             onClick={() => setActiveTab('third')}
           >
-            Tab 3
+            About us
           </button>
         </div>
 
@@ -59,15 +61,32 @@ const Portfolio = () => {
             </div>
           )}
 
-          {activeTab !== 'first' && (
+        </motion.div>
+      </div>
+      <div>
+
+        {/* Tab Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+
+
+          {activeTab !== 'second' && (
             <div className="text-center py-6">
               <p className="text-lg text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit.
+                Skills
+                Frontend Development: React, React Native, Next.js, HTML5, CSS3, JavaScript (ES6+), TypeScript
+                UI/UX Design: Modern CSS, SASS, Styled Components, responsive design, accessibility best practices
+                Backend Knowledge: Experience with Node.js, Express.js, RESTful APIs, and Strapi for content management
+                Tooling: Git, Webpack, Babel, NPM, Yarn, Jest, Vercel, Firebase, Figma
               </p>
             </div>
           )}
         </motion.div>
       </div>
+
     </section>
   );
 };

@@ -7,10 +7,10 @@ import { motion } from 'framer-motion';
 import { scroller } from 'react-scroll'; // مكتبة للتحكم في التمرير
 
 const navigation = [
-  { name: 'Product', href: 'tab1' }, // اجعل href يمثل ID للقسم المطلوب
-  { name: 'Features', href: 'features' },
-  { name: 'Marketplace', href: 'marketplace' },
-  { name: 'Company', href: 'company' },
+  { name: 'Protfolio', href: 'tab1' }, // اجعل href يمثل ID للقسم المطلوب
+  { name: 'Skills', href: 'tab2' },
+  { name: 'AboutUs', href: 'tab3' },
+  { name: 'Contact', href: 'Contact' },
 ];
 
 const Header = () => {
@@ -34,10 +34,11 @@ const Header = () => {
               <span className="sr-only">Your Company</span>
               <motion.img
                 alt="Logo"
-                src="https://cdn.sanity.io/images/kts928pd/production/932e2f37f151c3f2a10b594834614b04af2cc6f2-1200x843.png"
-                className="h-8 w-auto"
+                src="/Logo.jpg"
+                className="h-20 w-auto rounded-full bg-slate-950 "
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.3 }}
+                
               />
             </a>
           </div>
@@ -69,7 +70,7 @@ const Header = () => {
               className="text-sm font-semibold text-slate-300 hover:text-indigo-500"
               whileHover={{ scale: 1.05 }}
             >
-              Log in <span aria-hidden="true">&rarr;</span>
+              Contact <span aria-hidden="true">&rarr;</span>
             </motion.a>
           </div>
         </nav>
