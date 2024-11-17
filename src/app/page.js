@@ -9,7 +9,9 @@ import { motion } from "framer-motion";
 import BackgroundGradient from "./components/BackgroundGradient";
 import Footer from "./components/Footer"
 import AnimationLaptop from "../app/AnimationLaptop.json"
-import Lottie from "lottie-react";
+import { NavHeader } from "./components/Header";
+import { HeroParallaxDemo } from "./components/Heroparallax";
+import { Aboutus } from "./components/Aboutus";
 
 export default function Example() {
   const footerRef = useRef(null);
@@ -19,12 +21,13 @@ export default function Example() {
   };
 
   return (
-    <div className="isolate px-6 pt-14 lg:px-4 bg-gray-950">
-      <BackgroundGradient />
+          <div className=" dark:bg-black isolate px-6 pt-14 lg:px-4 bg-gray-950  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] ">
 
+         <NavHeader/>
+      <BackgroundGradient />
       <div className="sm:flex sm:justify-center">
 
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 text-center">
+        {/* <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 text-center">
           <ScrollAnimation>
             <motion.div className="hidden sm:mb-8 sm:flex sm:justify-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }}>
               <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
@@ -62,10 +65,10 @@ export default function Example() {
               </motion.a>
             </div>
           </ScrollAnimation>
-        </div>
-        <Lottie animationData={AnimationLaptop} />;
+        </div> */}
+        <HeroParallaxDemo/>
               </div>
-
+              <Aboutus/>
       <Dimages />
       <Portfolio />
 

@@ -21,3 +21,65 @@ body {
 .image.visible {
   filter: blur(0);
 }
+/* Style for the nav container */
+.navbar {
+  width: 451px;
+  height: 66px;
+  top: 50px;
+  left: 495px;
+  gap: 16px;
+  border-radius: 13px 0px 0px 0px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;
+  
+}
+
+/* Style for each link in the nav */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navcont {
+  color: white;
+  width: 451px;
+  height: 66px;
+  position: absolute;
+  top: 50px;
+  left: 495px;
+  gap: 16px;
+  border-radius: 13px 0 0 0;
+  border: 1px solid transparent; /* Only top border visible */
+  opacity: 0;
+}
+.contbuttoncont {
+  width: 351px; /* You mentioned "Hug" but it's interpreted as a fixed width */
+  height: 18px; /* Set height as described */
+  position: absolute;
+  top: 24px;
+  left: 50px;
+  gap: 32px;
+  opacity: 0;
+  display: flex;
+  align-items: center; /* Centers buttons vertically within this container */
+}
+.navbutton {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17.6px;
+  letter-spacing: -0.48px;
+  text-align: left;
+  text-decoration: none; /* Ensures no underlines */
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}

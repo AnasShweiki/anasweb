@@ -1,0 +1,72 @@
+/* Navigation bar styling */
+.nav {
+  width: 451px;
+  height: 66px;
+  top: 50px;
+  left: 495px;
+  display: flex;
+  gap: 16px;
+  border-radius: 13px 0px 0px 0px;
+  border: 1px solid transparent;
+  background: linear-gradient(103.4deg, #04071d 16.66%, #0c0e23 81.61%);
+  border-image-source: linear-gradient(92.44deg, rgba(105, 113, 162, 0.16) 21.16%, rgba(39, 42, 60, 0.37) 88.63%);
+  opacity:initial; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.navBtn {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17.6px;
+  letter-spacing: -0.48px;
+  text-align: left;
+  text-decoration: none;
+  text-underline-position: from-font;
+  padding: 10px 16px;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navBtn:hover {
+  background-color: #c1c2d3;
+}
+
+/* Content paragraph */
+.content {
+  width: 351px;
+  height: 18px;
+  position: absolute;
+  top: 24px;
+  left: 50px;
+  gap: 32px;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.contentParagraph {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Input section styling */
+.inputSection {
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  top: 61px;
+  left: 150px;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+.nav {
+  transition: opacity 0.5s ease;
+}
+
+.nav.visible {
+  opacity: 1;
+}
