@@ -8,6 +8,8 @@ import ScrollAnimation from "./components/ScrollAnimation";
 import { motion } from "framer-motion";
 import BackgroundGradient from "./components/BackgroundGradient";
 import Footer from "./components/Footer"
+import AnimationLaptop from "../app/AnimationLaptop.json"
+import Lottie from "lottie-react";
 
 export default function Example() {
   const footerRef = useRef(null);
@@ -21,6 +23,7 @@ export default function Example() {
       <BackgroundGradient />
 
       <div className="sm:flex sm:justify-center">
+
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 text-center">
           <ScrollAnimation>
             <motion.div className="hidden sm:mb-8 sm:flex sm:justify-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }}>
@@ -60,7 +63,8 @@ export default function Example() {
             </div>
           </ScrollAnimation>
         </div>
-      </div>
+        <Lottie animationData={AnimationLaptop} />;
+              </div>
 
       <Dimages />
       <Portfolio />

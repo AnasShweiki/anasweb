@@ -12,8 +12,10 @@ const Dimages = () => {
       // إذا كانت الصورة في منطقة العرض، نزيل البلور
       if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
         img.classList.add('visible');
+        img.classList.remove('blur-sm');  // Remove blur when image is in view
       } else {
         img.classList.remove('visible');
+        img.classList.add('blur-sm');  // Reapply blur when image is out of view
       }
     });
   };
@@ -125,7 +127,7 @@ const Dimages = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            whileHover={{ scale: 1.05, boxShadow: "0 8px 15px rgba(0, 0, 0, 0.3)" }} // تكبير العنصر عند التمرير
+            whileHover={{ scale: 1.05, boxShadow: "0 8px 15px rgba(0, 0, 0, 0.3)" }}
           >
             <div className="absolute inset-px rounded-lg bg-slate-950 blur-sm "></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] hover:bg-slate-950 rounded-sm hover:bg-slate-950 hover: rounded-full transform hover:scale-105 motion-reduce:transform-none  hover:shadow-lg hover:shadow-slate-800">
@@ -134,7 +136,7 @@ const Dimages = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                whileHover={{ scale: 1.05, color: "#ff80b5" }} // تغيير اللون عند التمرير على النص
+                whileHover={{ scale: 1.05, color: "#ff80b5" }}
               >
                 <p className="mt-2 text-lg font-medium tracking-tight text-red-50 max-lg:text-center">TeamWork</p>
                 <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
@@ -144,13 +146,13 @@ const Dimages = () => {
 
               <div className="flex flex-1 items-center [container-type:inline-size] max-lg:py-6 lg:pb-2">
                 <motion.img
-                  className="h-[min(152px,40cqw)] object-cover object-center w-full rounded scale-95 blur-sm hover:blur-none"
+                  className="h-[min(152px,40cqw)] object-cover object-center w-full rounded scale-95 blur-sm image hover:blur-none"
                   src="/images.jpg"
                   alt=""
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6, duration: 1 }}
-                  whileHover={{ scale: 1.1, transition: { duration: 0.3 } }} // تكبير الصورة عند التمرير
+                  whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
                 />
               </div>
             </div>
@@ -163,7 +165,7 @@ const Dimages = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            whileHover={{ scale: 1.05, boxShadow: "0 8px 15px rgba(0, 0, 0, 0.3)" }} // تكبير العنصر عند التمرير
+            whileHover={{ scale: 1.05, boxShadow: "0 8px 15px rgba(0, 0, 0, 0.3)" }}
           >
             <div className="absolute inset-px rounded-lg bg-slate-950 blur-sm max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]  hover:bg-slate-950 rounded-sm hover:scale-105 motion-reduce:transform-nonehover:shadow-lg hover:shadow-slate-800">
@@ -172,7 +174,7 @@ const Dimages = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                whileHover={{ scale: 1.05, color: "#ff80b5" }} // تغيير اللون عند التمرير على النص
+                whileHover={{ scale: 1.05, color: "#ff80b5" }}
               >
                 <p className="mt-2 text-lg font-medium tracking-tight text-red-50 max-lg:text-center">
                   Powerful APIs
@@ -184,13 +186,13 @@ const Dimages = () => {
 
               <div className="w-full grow">
                 <motion.img
-                  className=" scale-95 w-full h-full rounded blur-sm hover:blur-none"
+                  className=" scale-95 w-full h-full rounded blur-sm image hover:blur-none"
                   src="/DTFsuperstore.com++Responsive+E-Commerce+Website+Design.jpg"
                   alt=""
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7, duration: 1 }}
-                  whileHover={{ scale: 1.1, transition: { duration: 0.3 } }} // تكبير الصورة عند التمرير
+                  whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
                 />
               </div>
             </div>
