@@ -1,5 +1,5 @@
 import "./globals.css"; // Ensure this imports your updated globals.css
-import Header from "./components/Header";
+import Header, { NavHeader } from "./components/Header";
 import Footer from "./components/Footer";
 
 export const metadata = {
@@ -11,6 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-zinc-600 text-gray-900"> 
+        {/* <NavHeader/> */}
         <main className="bg-slate-950 text-gray-400 ">{children}</main>
       </body>
     </html>

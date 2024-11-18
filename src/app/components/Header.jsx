@@ -8,27 +8,27 @@ export function NavHeader() {
     {
       name: "Home",
       link: "/",
-      icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <IconHome className="h-5 w-5 text-neutral-500 dark:text-white" />, // Slightly larger icon
     },
     {
       name: "About",
       link: "/about",
-      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <IconUser className="h-5 w-5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Skills",
       link: "/skills",
-      icon: <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <IconMessage className="h-5 w-5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Contact",
       link: "/contact",
-      icon: <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <IconMessage className="h-5 w-5 text-neutral-500 dark:text-white" />,
     },
   ];
 
   return (
-    <div className="relative w-full">
+    <div className="w-auto mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
       <FloatingNav navItems={navItems} />
     </div>
   );
