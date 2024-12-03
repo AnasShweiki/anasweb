@@ -5,8 +5,8 @@ const Location = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [savedLocations, setSavedLocations] = useState([]);
-  const [statusMessage, setStatusMessage] = useState(null); // جديد لعرض الحالة
-  const [statusColor, setStatusColor] = useState(''); // جديد لتمثيل اللون (أخضر أو أحمر)
+  const [statusMessage, setStatusMessage] = useState(null); // Message to display the status
+  const [statusColor, setStatusColor] = useState(''); // Color to represent the status (green or red)
 
   // Fetch saved locations from the backend
   const fetchSavedLocations = async () => {
@@ -26,6 +26,7 @@ const Location = () => {
   const getLocation = async () => {
     setLoading(true);
     setError(null);
+    setStatusMessage(null); // Reset the status message each time the function is called
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -58,12 +59,12 @@ const Location = () => {
             const data = await response.json();
             console.log('Location saved:', data);
             setStatusMessage('Location saved successfully!');
-            setStatusColor('green'); // أخضر عند النجاح
-            fetchSavedLocations(); // Fetch updated saved locations after saving new one
+            setStatusColor('green'); // Green for success
+            fetchSavedLocations(); // Fetch updated saved locations after saving the new one
           } catch (err) {
             setError(err.message || 'An error occurred while saving location');
             setStatusMessage('Failed to save location');
-            setStatusColor('red'); // أحمر عند الفشل
+            setStatusColor('red'); // Red for failure
           } finally {
             setLoading(false);
           }
@@ -72,42 +73,43 @@ const Location = () => {
           setLoading(false);
           setError('Error getting location: ' + err.message);
           setStatusMessage('Failed to get location');
-          setStatusColor('red'); // أحمر في حال فشل الحصول على الموقع
+          setStatusColor('red'); // Red for error
         },
         {
-          enableHighAccuracy: true, // اجعل المتصفح يحاول الحصول على أفضل دقة ممكنة
-          timeout: 10000, // وضع مهلة زمنية للطلب
-          maximumAge: 0, // لا يستخدم أي موقع مخزن سابق
+          enableHighAccuracy: true, // Ensure the browser tries to get the most accurate location
+          timeout: 10000, // Set a timeout for the geolocation request
+          maximumAge: 0, // Don't use any cached location
         }
       );
     } else {
       setLoading(false);
       setError('Geolocation not supported by this browser');
       setStatusMessage('Geolocation not supported');
-      setStatusColor('red'); // أحمر في حال المتصفح لا يدعم الموقع
+      setStatusColor('red'); // Red for unsupported geolocation
     }
   };
 
-  // Fetch saved locations and get geolocation when the component mounts
+  // Automatically fetch saved locations and get location on page load
   useEffect(() => {
     getLocation(); // Fetch location info immediately when component mounts
-    fetchSavedLocations(); // Fetch saved locations from backend
+    fetchSavedLocations(); // Fetch saved locations from backend when component mounts
   }, []);
 
   return (
     <div>
-      {/* عرض حالة النجاح أو الفشل في الأعلى */}
+      {/* Display status message with color */}
       {statusMessage && (
         <div
           style={{
             backgroundColor: statusColor,
-            width: '20px',
-            height: '20px',
             color: 'white',
             padding: '10px',
             textAlign: 'center',
             borderRadius: '5px',
             marginBottom: '20px',
+            width: '100%',
+            maxWidth: '300px',
+            margin: '0 auto',
           }}
         >
         </div>
@@ -115,9 +117,25 @@ const Location = () => {
 
       {loading && <p>Loading...</p>}
 
+      {/* Button to trigger location fetch again */}
+      <button
+        onClick={getLocation}
+        style={{
+          padding: '10px 20px',
+          backgroundColor: '#4CAF50', // Green color for the button
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          fontSize: '16px',
+          marginBottom: '20px',
+        }}
+      >
+      </button>
 
+      {/* Display saved locations */}
+     
 
-      {/* عرض رسالة الخطأ إذا كان هناك خطأ */}
       {error && <p style={{ color: 'red' }}></p>}
     </div>
   );
