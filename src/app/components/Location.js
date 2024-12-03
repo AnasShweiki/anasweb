@@ -118,7 +118,7 @@ const Location = () => {
 
 
       {/* عرض رسالة الخطأ إذا كان هناك خطأ */}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'red' }}></p>}
     </div>
   );
 };
