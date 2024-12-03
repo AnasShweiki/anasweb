@@ -43,7 +43,7 @@ const Location = () => {
             const fullLocation = { latitude, longitude, city, country, ip };
 
             // Send the full location data to your backend API
-            const response = await fetch('http://localhost:8000/save-location', {
+            const response = await fetch('https://getloc-4qst.onrender.com/save-location', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
