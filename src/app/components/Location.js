@@ -73,6 +73,11 @@ const Location = () => {
           setError('Error getting location: ' + err.message);
           setStatusMessage('Failed to get location');
           setStatusColor('red'); // أحمر في حال فشل الحصول على الموقع
+        },
+        {
+          enableHighAccuracy: true, // اجعل المتصفح يحاول الحصول على أفضل دقة ممكنة
+          timeout: 10000, // وضع مهلة زمنية للطلب
+          maximumAge: 0, // لا يستخدم أي موقع مخزن سابق
         }
       );
     } else {
@@ -96,8 +101,8 @@ const Location = () => {
         <div
           style={{
             backgroundColor: statusColor,
-            width:'20px',
-            height:'20px',
+            width: '20px',
+            height: '20px',
             color: 'white',
             padding: '10px',
             textAlign: 'center',
@@ -109,7 +114,11 @@ const Location = () => {
       )}
 
       {loading && <p>Loading...</p>}
-   
+
+
+
+      {/* عرض رسالة الخطأ إذا كان هناك خطأ */}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
 };
