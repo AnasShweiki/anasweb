@@ -121,14 +121,15 @@ const Location = () => {
       <button
         onClick={getLocation}
         style={{
-          padding: '10px 20px',
-          backgroundColor: '#4CAF50', // Green color for the button
+          padding: '20px 20px',
+          top:200,
+          backgroundColor: statusColor, // Green color for the button
           color: 'white',
           border: 'none',
           borderRadius: '5px',
           cursor: 'pointer',
           fontSize: '16px',
-          marginBottom: '20px',
+          marginBottom: '50px',
         }}
       >
       </button>
