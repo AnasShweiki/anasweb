@@ -12,6 +12,7 @@ import AnimationLaptop from "../app/AnimationLaptop.json"
 import { NavHeader } from "./components/Header";
 import { HeroParallaxDemo } from "./components/Heroparallax";
 import { Aboutus } from "./components/Aboutus";
+import Location from "./components/Location";
 
 export default function Example() {
   const footerRef = useRef(null);
@@ -22,7 +23,7 @@ export default function Example() {
 
   return (
           <div className=" dark:bg-black isolate px-6 pt-14 lg:px-4 bg-gray-950  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] ">
-
+           <Location/>
          <NavHeader/>
       <BackgroundGradient />
       <HeroParallaxDemo/>
